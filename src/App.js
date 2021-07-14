@@ -15,10 +15,10 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <GlobalState>
         <BrowserRouter>
-          <Header
+          {/* <Header
             accessButton={accessButton}
             setAccessButton={setAccessButton}
-          />
+          /> */}
           <Router setAccessButton={setAccessButton} />
         </BrowserRouter>
       </GlobalState>
