@@ -26,7 +26,7 @@ const SignUpForm = ({ setAccessButton }) => {
           name={"username"}
           value={form.username}
           onChange={onChange}
-          label={"Nome"}
+          label={"Name"}
           margin={"dense"}
           variant={"outlined"}
           type={"text"}
@@ -35,10 +35,22 @@ const SignUpForm = ({ setAccessButton }) => {
         />
 
         <TextField
-          name={"email"}
+          name={"nickname"}
+          value={form.nickname}
+          onChange={onChange}
+          label={"Nickname"}
+          margin={"dense"}
+          variant={"outlined"}
+          type={"text"}
+          required
+          fullWidth
+        />
+
+        <TextField
+          name={"Email"}
           value={form.email}
           onChange={onChange}
-          label={"E-mail"}
+          label={"Email"}
           margin={"dense"}
           variant={"outlined"}
           type={"email"}
@@ -50,7 +62,7 @@ const SignUpForm = ({ setAccessButton }) => {
           name={"password"}
           value={form.password}
           onChange={onChange}
-          label={"password"}
+          label={"Password"}
           variant={"outlined"}
           margin={"dense"}
           type={"password"}
@@ -67,7 +79,7 @@ const SignUpForm = ({ setAccessButton }) => {
             {isLoading ? (
               <CircularProgress color={"inherit"} size={24} />
             ) : (
-              <> Cadastrar </>
+              <> Sign up </>
             )}
           </Button>
         </Box>
