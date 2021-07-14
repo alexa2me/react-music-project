@@ -13,7 +13,7 @@ import LoginForm from "./LoginForm";
 import { useHistory } from "react-router";
 import useUnprotectedPage from "../../hooks/useUnprotectedPage";
 
-const Login = ({ setAccessButton }) => {
+const Login = () => {
   useUnprotectedPage();
   const history = useHistory();
 
@@ -22,7 +22,7 @@ const Login = ({ setAccessButton }) => {
       <RightSideContainer>
         <div>
           <Title>Login</Title>
-          <LoginForm setAccessButton={setAccessButton} />
+          <LoginForm />
           <SignUpButtonContainer>
             <Button
               onClick={() => goToSignUp(history)}
