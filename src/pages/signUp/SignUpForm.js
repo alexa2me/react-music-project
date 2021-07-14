@@ -2,29 +2,30 @@ import React, { useState } from "react";
 import { InputContainer } from "./styled";
 import { TextField, Button, Box, CircularProgress } from "@material-ui/core";
 import useForm from "../../hooks/useForm";
-// import { signup } from "../../services/user";
+import { signup } from "../../services/user";
 import { useHistory } from "react-router-dom";
 
-const SignUpForm = ({ setAccessButton }) => {
+const SignUpForm = () => {
   const history = useHistory();
   const [form, onChange, clear] = useForm({
-    username: "",
+    name: "",
+    nickname: "",
     email: "",
     password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmitForm = (e) => {
-    // e.preventDefault();
-    // signup(form, clear, history, setAccessButton, setIsLoading);
+    e.preventDefault();
+    signup(form, clear, history, setIsLoading);
   };
 
   return (
     <InputContainer>
       <form onSubmit={onSubmitForm}>
         <TextField
-          name={"username"}
-          value={form.username}
+          name={"name"}
+          value={form.name}
           onChange={onChange}
           label={"Name"}
           margin={"dense"}
@@ -47,7 +48,7 @@ const SignUpForm = ({ setAccessButton }) => {
         />
 
         <TextField
-          name={"Email"}
+          name={"email"}
           value={form.email}
           onChange={onChange}
           label={"Email"}
