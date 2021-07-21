@@ -5,14 +5,14 @@ import { login } from "../../services/user";
 import { InputContainer } from "./styled";
 import { TextField, Button, Box, CircularProgress } from "@material-ui/core";
 
-const LoginForm = ({ setAccessButton }) => {
+const LoginForm = () => {
   const history = useHistory();
   const [form, onChange, clear] = useForm({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmitForm = (e) => {
     e.preventDefault();
-    login(form, clear, history, setAccessButton, setIsLoading);
+    login(form, clear, history, setIsLoading);
   };
 
   return (
@@ -22,7 +22,7 @@ const LoginForm = ({ setAccessButton }) => {
           name={"email"}
           value={form.email}
           onChange={onChange}
-          label={"E-mail"}
+          label={"Email"}
           margin={"dense"}
           variant={"outlined"}
           type={"email"}
@@ -34,7 +34,7 @@ const LoginForm = ({ setAccessButton }) => {
           name={"password"}
           value={form.password}
           onChange={onChange}
-          label={"password"}
+          label={"Password"}
           variant={"outlined"}
           margin={"dense"}
           type={"password"}

@@ -1,14 +1,10 @@
 import styled from "styled-components";
 
-export const LogoImage = styled.img`
-  width: 7vh;
-  max-width: 350px;
-`;
-
 export const Title = styled.p`
-  font-family: "Allerta Stencil", sans-serif;
   font-size: 5vh;
-  margin-left: 10px;
+  text-align: center;
+  margin: 10px 0;
+  color: #d598a0;
 `;
 
 export const LogoContainer = styled.div`
@@ -17,11 +13,9 @@ export const LogoContainer = styled.div`
 `;
 
 export const ScreenContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  width: 100vw;
-  margin-top: 13vh;
 `;
 
 export const LoginFormContainer = styled.div`
@@ -36,15 +30,32 @@ export const LoginFormContainer = styled.div`
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 70vw;
-  max-width: 450px;
+  width: 40vw;
+  max-width: 380px;
   align-items: center;
   margin-bottom: 6px;
 `;
 
 export const SignUpButtonContainer = styled.button`
   width: 70vw;
-  max-width: 450px;
+  max-width: 380px;
   border: none;
   border-radius: 5px;
+`;
+
+export const SideContainer = styled.div`
+  background-color: #d598a0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const RightSideContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  height: 100vh;
 `;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const InputContainer = styled.div`
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 15%;
   justify-content: center;
   width: 60vw;
@@ -10,11 +10,11 @@ export const InputContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     width: 88vw;
-  }
+  } */
 `;
 
 export const AddSongButton = styled.button`
-  order: 2;
+  /* order: 2;
   background-color: #3d9690;
   color: #ffffff;
   border-radius: 5px;
@@ -25,8 +25,8 @@ export const AddSongButton = styled.button`
   grid-row: 1 / 3;
   grid-column: 2 / 3;
   font-size: 20px;
-  cursor: pointer;
-  :hover {
+  cursor: pointer; */
+  /* :hover {
     background-color: #43bab8;
     color: #ffffff;
     transition: all 0.5s ease 0s;
@@ -37,13 +37,5 @@ export const AddSongButton = styled.button`
     margin-top: 5px;
     padding: 8px 5px;
     width: 88vw;
-  }
-`;
-
-export const FormTextContainer = styled.div`
-  order: 3;
-  @media only screen and (max-width: 400px) {
-    display: flex;
-    order: 2;
-  }
+  } */
 `;

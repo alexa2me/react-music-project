@@ -1,10 +1,10 @@
 import React from "react";
 import {
-  LogoImage,
   ScreenContainer,
-  Title,
-  LogoContainer,
   SignUpButtonContainer,
+  Title,
+  SideContainer,
+  RightSideContainer,
 } from "./styled";
 import logo from "../../assets/images/logo.png";
 import { Button } from "@material-ui/core";
@@ -13,25 +13,33 @@ import LoginForm from "./LoginForm";
 import { useHistory } from "react-router";
 import useUnprotectedPage from "../../hooks/useUnprotectedPage";
 
-const Login = ({ setAccessButton }) => {
+const Login = () => {
   useUnprotectedPage();
   const history = useHistory();
 
   return (
     <ScreenContainer>
-      <LoginForm setAccessButton={setAccessButton} />
-      <SignUpButtonContainer>
-        <Button
-          onClick={() => goToSignUp(history)}
-          type={"submit"}
-          variant={"text"}
-          color={"primary"}
-          margin={"normal"}
-          fullWidth
-        >
-          Não possui conta? Cadastre-se!
-        </Button>
-      </SignUpButtonContainer>
+      <RightSideContainer>
+        <div>
+          <Title>Login</Title>
+          <LoginForm />
+          <SignUpButtonContainer>
+            <Button
+              onClick={() => goToSignUp(history)}
+              type={"submit"}
+              variant={"text"}
+              color={"primary"}
+              margin={"normal"}
+              fullWidth
+            >
+              Don't have an account? Sign up here!
+            </Button>
+          </SignUpButtonContainer>
+        </div>
+      </RightSideContainer>
+      <SideContainer>
+        <img src={logo} alt="logo" />
+      </SideContainer>
     </ScreenContainer>
   );
 };

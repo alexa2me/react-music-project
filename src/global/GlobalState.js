@@ -1,53 +1,46 @@
 import React, { useState, useEffect } from "react";
 import GlobalStateContext from "./GlobalStateContext";
-import axios from "axios";
-import BASE_URL from "../constants/urls";
+import { getSongs } from "../services/getSongs";
+import { getGenres } from "../services/getGenres";
 
 const GlobalState = (props) => {
-  const [posts, setPosts] = useState([]);
-  const [count, setCount] = useState(0);
-
-  const getPosts = () => {
-    axios
-      .get(`${BASE_URL}/posts`, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        setPosts(res.data.posts);
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
-  };
+  const [songs, setSongs] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [isUpdate, setIsUpdate] = useState(false);
 
   useEffect(() => {
-    getPosts();
-  }, [posts]);
+    if (isUpdate) {
+      (async () => {
+        const res = await getSongs();
 
-  const postVote = (userVote, id) => {
-    const body = {
-      direction: userVote,
-    };
-    axios
-      .put(`${BASE_URL}/posts/${id}/vote`, body, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        setCount(res.data);
-        console.log(count);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+        if (res.status) {
+          setSongs(res.songs);
+        } else {
+          console.log(res.message);
+        }
+        setIsUpdate(false);
+      })();
+    }
+  }, [isUpdate]);
 
-  const states = { posts, count };
-  const setters = { setPosts, setCount };
-  const requests = { getPosts, postVote };
+  useEffect(() => {
+    if (isUpdate) {
+      (async () => {
+        const res = await getGenres();
+
+        if (res.status) {
+          setGenres(res.genres);
+        } else {
+          console.log(res.message);
+        }
+        setIsUpdate(false);
+      })();
+    }
+  }, [isUpdate]);
+
+  const states = { songs, genres, isUpdate };
+  const setters = { setSongs, setGenres, setIsUpdate };
+  const requests = { getSongs, getGenres };
 
   return (
     <GlobalStateContext.Provider value={{ states, setters, requests }}>

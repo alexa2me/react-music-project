@@ -2,31 +2,44 @@ import React, { useState } from "react";
 import { InputContainer } from "./styled";
 import { TextField, Button, Box, CircularProgress } from "@material-ui/core";
 import useForm from "../../hooks/useForm";
-// import { signup } from "../../services/user";
+import { signup } from "../../services/user";
 import { useHistory } from "react-router-dom";
 
-const SignUpForm = ({ setAccessButton }) => {
+const SignUpForm = () => {
   const history = useHistory();
   const [form, onChange, clear] = useForm({
-    username: "",
+    name: "",
+    nickname: "",
     email: "",
     password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmitForm = (e) => {
-    // e.preventDefault();
-    // signup(form, clear, history, setAccessButton, setIsLoading);
+    e.preventDefault();
+    signup(form, clear, history, setIsLoading);
   };
 
   return (
     <InputContainer>
       <form onSubmit={onSubmitForm}>
         <TextField
-          name={"username"}
-          value={form.username}
+          name={"name"}
+          value={form.name}
           onChange={onChange}
-          label={"Nome"}
+          label={"Name"}
+          margin={"dense"}
+          variant={"outlined"}
+          type={"text"}
+          required
+          fullWidth
+        />
+
+        <TextField
+          name={"nickname"}
+          value={form.nickname}
+          onChange={onChange}
+          label={"Nickname"}
           margin={"dense"}
           variant={"outlined"}
           type={"text"}
@@ -38,7 +51,7 @@ const SignUpForm = ({ setAccessButton }) => {
           name={"email"}
           value={form.email}
           onChange={onChange}
-          label={"E-mail"}
+          label={"Email"}
           margin={"dense"}
           variant={"outlined"}
           type={"email"}
@@ -50,7 +63,7 @@ const SignUpForm = ({ setAccessButton }) => {
           name={"password"}
           value={form.password}
           onChange={onChange}
-          label={"password"}
+          label={"Password"}
           variant={"outlined"}
           margin={"dense"}
           type={"password"}
@@ -67,7 +80,7 @@ const SignUpForm = ({ setAccessButton }) => {
             {isLoading ? (
               <CircularProgress color={"inherit"} size={24} />
             ) : (
-              <> Cadastrar </>
+              <> Sign up </>
             )}
           </Button>
         </Box>

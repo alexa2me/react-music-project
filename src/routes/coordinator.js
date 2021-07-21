@@ -1,11 +1,15 @@
 export const goToLogin = (history) => {
-  history.push("/login");
+  history.push("/users/login");
 };
 
 export const goToSignUp = (history) => {
-  history.push("/signup");
+  history.push("/users/signup");
 };
 
-export const goToSongsList = (history) => {
+export const goToCreateSong = (history) => {
+  history.push("/createsong");
+};
+
+export const goToHomePage = (history) => {
   history.push("/");
 };
