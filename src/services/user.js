@@ -1,6 +1,6 @@
 import BASE_URL from "../constants/urls";
 import axios from "axios";
-import { goToSongsList } from "../routes/coordinator";
+import { goToHomePage } from "../routes/coordinator";
 
 export const login = (body, clear, history, setIsLoading) => {
   setIsLoading(true);
@@ -10,8 +10,7 @@ export const login = (body, clear, history, setIsLoading) => {
       localStorage.setItem("token", res.data.token);
       clear();
       setIsLoading(false);
-      goToSongsList(history);
-      // setAccessButton("Logout");
+      goToHomePage(history);
     })
     .catch((err) => {
       setIsLoading(false);
@@ -28,8 +27,7 @@ export const signup = (body, clear, history, setIsLoading) => {
       alert("User created successfully!");
       clear();
       setIsLoading(false);
-      goToSongsList(history);
-      // setAccessButton("Logout");
+      goToHomePage(history);
     })
     .catch((err) => {
       setIsLoading(false);
