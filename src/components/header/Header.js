@@ -1,11 +1,15 @@
 import React from "react";
 import { AppBar, Button } from "@material-ui/core";
-import { StyledToolbar, StyledBox, ImgLogo } from "./styled";
-import { goToLogin, goToPostsList } from "../../routes/coordinator";
+import { StyledToolbar, StyledBox, StyledButton, ImgLogo } from "./styled";
+import {
+  goToCreateSong,
+  goToHomePage,
+  goToLogin,
+} from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 
-const Header = ({ accessButton, setAccessButton }) => {
+const Header = () => {
   const token = localStorage.getItem("token");
   const history = useHistory();
 
@@ -16,9 +20,6 @@ const Header = ({ accessButton, setAccessButton }) => {
   const accessButtonAction = () => {
     if (token) {
       logout();
-      setAccessButton("Login");
-      goToLogin(history);
-    } else {
       goToLogin(history);
     }
   };
@@ -31,11 +32,28 @@ const Header = ({ accessButton, setAccessButton }) => {
           justifyContent={"center"}
           alignItems={"center"}
         >
-          <ImgLogo src={logo} alt="Logo" />
+          <ImgLogo
+            src={logo}
+            alt="Logo"
+            onClick={() => goToHomePage(history)}
+          />
         </StyledBox>
-        <Button onClick={accessButtonAction} color="inherit">
-          {accessButton}
-        </Button>
+
+        <StyledButton onClick={() => goToHomePage(history)} color="inherit">
+          Home
+        </StyledButton>
+
+        <StyledButton onClick={() => ""} color="inherit">
+          Playlist
+        </StyledButton>
+
+        <StyledButton onClick={() => goToCreateSong(history)} color="inherit">
+          Add song
+        </StyledButton>
+
+        <StyledButton onClick={accessButtonAction} color="inherit">
+          Logout
+        </StyledButton>
       </StyledToolbar>
     </AppBar>
   );
