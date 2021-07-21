@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 import { useLayoutEffect } from "react";
-import { goToSongsList } from "../routes/coordinator";
+import { goToHomePage } from "../routes/coordinator";
 
 const useProtectedPage = () => {
   const history = useHistory();
@@ -8,7 +8,7 @@ const useProtectedPage = () => {
   useLayoutEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      goToSongsList(history);
+      goToHomePage(history);
     }
   }, [history]);
 };
